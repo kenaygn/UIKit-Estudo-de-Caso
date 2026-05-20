@@ -27,8 +27,19 @@ class MainTabBarController: UITabBarController {
         let chatsVC = UIHostingController(rootView: chatsView)
         let chatsNav = UINavigationController(rootViewController: chatsVC)
         chatsNav.tabBarItem = UITabBarItem(title: "Conversas", image: UIImage(systemName: "bubble.right"), tag: 1)
+
         
-        viewControllers = [callsNav, chatsNav]
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let settingsVC = storyboard.instantiateViewController(withIdentifier: "SettingsViewController")
+        
+        let settingsNav = UINavigationController(rootViewController: settingsVC)
+        
+        settingsVC.title = "Configurações"
+        settingsNav.navigationBar.prefersLargeTitles = true
+        
+        settingsNav.tabBarItem = UITabBarItem(title: "Configurações", image: UIImage(systemName: "gear"), tag: 2)
+        
+        viewControllers = [callsNav, chatsNav, settingsNav]
     }
     
     
